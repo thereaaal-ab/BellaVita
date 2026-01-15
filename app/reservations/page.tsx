@@ -71,7 +71,14 @@ export default function ReservationsPage() {
         }),
       });
 
-      if (!response.ok) throw new Error("Failed to submit reservation");
+      const responseData = await response.json();
+
+      if (!response.ok) {
+        // Show the actual error message from the API
+        const errorMessage = responseData.error || "Failed to submit reservation";
+        toast.error(errorMessage);
+        return;
+      }
 
       toast.success("Reservation submitted successfully! We'll confirm shortly.");
       // Reset form
@@ -82,8 +89,10 @@ export default function ReservationsPage() {
       setValue("time", "");
       setValue("partySize", "");
       setValue("specialRequests", "");
-    } catch {
-      toast.error("Failed to submit reservation. Please try again.");
+      setValue("date", new Date());
+    } catch (error) {
+      console.error("Reservation submission error:", error);
+      toast.error("Failed to submit reservation. Please check your connection and try again.");
     }
   };
 
