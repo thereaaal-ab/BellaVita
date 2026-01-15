@@ -17,7 +17,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     "/privacy",
     "/terms",
   ].map((route) => {
-    const changeFrequency = (route === "" ? "daily" : "weekly") as const;
+    const changeFrequency: "daily" | "weekly" = route === "" ? "daily" : "weekly";
     return {
       url: `${baseUrl}${route}`,
       lastModified: new Date(),
