@@ -9,19 +9,19 @@ const team = [
   {
     name: "Marco Rossi",
     role: "Head Chef",
-    image: "/images/chef-1.jpg",
+    image: "https://images.unsplash.com/photo-1581299894007-aaa50297cf16?w=400&q=80",
     bio: "With over 20 years of experience, Marco brings authentic Italian flavors to every dish.",
   },
   {
     name: "Sofia Bianchi",
     role: "Pastry Chef",
-    image: "/images/chef-2.jpg",
+    image: "https://images.unsplash.com/photo-1559339352-11d035aa65de?w=400&q=80",
     bio: "Sofia specializes in traditional Italian desserts and has won multiple awards.",
   },
   {
     name: "Giuseppe Verdi",
     role: "Sommelier",
-    image: "/images/chef-3.jpg",
+    image: "https://images.unsplash.com/photo-1577219491135-ce391730fb2c?w=400&q=80",
     bio: "Giuseppe curates our extensive wine collection, ensuring perfect pairings.",
   },
 ];
@@ -51,7 +51,7 @@ export default function AboutPage() {
       <section className="relative h-96 flex items-center justify-center overflow-hidden">
         <div
           className="absolute inset-0 bg-cover bg-center"
-          style={{ backgroundImage: "url('/images/about-hero.jpg')" }}
+          style={{ backgroundImage: "url('https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=1920&q=80')" }}
         >
           <div className="absolute inset-0 bg-black/50" />
         </div>

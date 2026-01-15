@@ -89,7 +89,7 @@ export default function BlogPage() {
                   <CardDescription>{post.excerpt}</CardDescription>
                 </CardHeader>
                 <CardContent className="mt-auto">
-                  <Button asChild variant="outline" className="w-full">
+                  <Button asChild variant="outline" className="w-full border">
                     <Link href={`/blog/${post.slug}`}>
                       Read More <ArrowRight className="ml-2 h-4 w-4" />
                     </Link>

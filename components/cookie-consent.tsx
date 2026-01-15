@@ -47,7 +47,7 @@ export function CookieConsent() {
               </p>
             </div>
             <div className="flex gap-2 flex-shrink-0">
-              <Button variant="outline" size="sm" onClick={rejectCookies}>
+              <Button variant="outline" size="sm" className="border" onClick={rejectCookies}>
                 Reject
               </Button>
               <Button size="sm" onClick={acceptCookies}>

@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 import { Lock } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -94,7 +95,7 @@ export default function AdminPage() {
             <CardDescription>View and manage reservations</CardDescription>
           </CardHeader>
           <CardContent>
-            <Button asChild variant="outline" className="w-full">
+            <Button asChild variant="outline" className="w-full border">
               <a href="/admin/reservations">View All</a>
             </Button>
           </CardContent>
@@ -106,8 +107,8 @@ export default function AdminPage() {
             <CardDescription>Manage online orders</CardDescription>
           </CardHeader>
           <CardContent>
-            <Button asChild variant="outline" className="w-full">
-              <a href="/admin/orders">View All</a>
+            <Button asChild variant="outline" className="w-full border">
+              <Link href="/admin/orders">View All</Link>
             </Button>
           </CardContent>
         </Card>
@@ -118,8 +119,8 @@ export default function AdminPage() {
             <CardDescription>Approve and manage reviews</CardDescription>
           </CardHeader>
           <CardContent>
-            <Button asChild variant="outline" className="w-full">
-              <a href="/admin/reviews">View All</a>
+            <Button asChild variant="outline" className="w-full border">
+              <Link href="/admin/reviews">View All</Link>
             </Button>
           </CardContent>
         </Card>
@@ -130,8 +131,8 @@ export default function AdminPage() {
             <CardDescription>Edit menu items</CardDescription>
           </CardHeader>
           <CardContent>
-            <Button asChild variant="outline" className="w-full">
-              <a href="/admin/menu">Manage Menu</a>
+            <Button asChild variant="outline" className="w-full border">
+              <Link href="/admin/menu">Manage Menu</Link>
             </Button>
           </CardContent>
         </Card>
@@ -140,6 +141,7 @@ export default function AdminPage() {
       <div className="mt-8">
         <Button
           variant="outline"
+          className="border"
           onClick={() => {
             localStorage.removeItem("admin-auth");
             setIsAuthenticated(false);

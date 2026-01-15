@@ -182,10 +182,11 @@ export default function ReservationsPage() {
                     id="time"
                     {...register("time")}
                     aria-invalid={!!errors.time}
+                    className="text-foreground bg-background"
                   >
-                    <option value="">Select time</option>
+                    <option value="" className="bg-background text-foreground">Select time</option>
                     {timeSlots.map((time) => (
-                      <option key={time} value={time}>
+                      <option key={time} value={time} className="bg-background text-foreground">
                         {time}
                       </option>
                     ))}
@@ -204,10 +205,11 @@ export default function ReservationsPage() {
                   id="partySize"
                   {...register("partySize")}
                   aria-invalid={!!errors.partySize}
+                  className="text-foreground bg-background"
                 >
-                  <option value="">Select party size</option>
+                  <option value="" className="bg-background text-foreground">Select party size</option>
                   {partySizes.map((size) => (
-                    <option key={size} value={size}>
+                    <option key={size} value={size} className="bg-background text-foreground">
                       {size} {size === "1" ? "guest" : "guests"}
                     </option>
                   ))}

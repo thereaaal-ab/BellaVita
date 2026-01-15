@@ -20,7 +20,7 @@ export default function NotFound() {
               Go Home
             </Link>
           </Button>
-          <Button asChild variant="outline" size="lg">
+          <Button asChild variant="outline" size="lg" className="border">
             <Link href="/menu">
               <Search className="mr-2 h-4 w-4" />
               Browse Menu

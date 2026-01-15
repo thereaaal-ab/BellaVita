@@ -6,15 +6,15 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Modal } from "@/components/ui/modal";
 
 const galleryImages = [
-  { id: 1, src: "/images/gallery-1.jpg", alt: "Restaurant interior" },
-  { id: 2, src: "/images/gallery-2.jpg", alt: "Dining area" },
-  { id: 3, src: "/images/gallery-3.jpg", alt: "Kitchen" },
-  { id: 4, src: "/images/gallery-4.jpg", alt: "Wine selection" },
-  { id: 5, src: "/images/gallery-5.jpg", alt: "Dessert display" },
-  { id: 6, src: "/images/gallery-6.jpg", alt: "Chef preparing dish" },
-  { id: 7, src: "/images/gallery-7.jpg", alt: "Pasta dish" },
-  { id: 8, src: "/images/gallery-8.jpg", alt: "Outdoor seating" },
-  { id: 9, src: "/images/gallery-9.jpg", alt: "Bar area" },
+  { id: 1, src: "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=800&q=80", alt: "Restaurant interior" },
+  { id: 2, src: "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=800&q=80", alt: "Dining area" },
+  { id: 3, src: "https://images.unsplash.com/photo-1556910103-1c02745aae4d?w=800&q=80", alt: "Kitchen" },
+  { id: 4, src: "https://images.unsplash.com/photo-1510812431401-41d2bd2722f3?w=800&q=80", alt: "Wine selection" },
+  { id: 5, src: "https://images.unsplash.com/photo-1571877227200-a0d98ea607e9?w=800&q=80", alt: "Dessert display" },
+  { id: 6, src: "https://images.unsplash.com/photo-1581299894007-aaa50297cf16?w=800&q=80", alt: "Chef preparing dish" },
+  { id: 7, src: "https://images.unsplash.com/photo-1621996346565-e3dbc646d9a9?w=800&q=80", alt: "Pasta dish" },
+  { id: 8, src: "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=800&q=80", alt: "Outdoor seating" },
+  { id: 9, src: "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=800&q=80", alt: "Bar area" },
 ];
 
 export default function GalleryPage() {

@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button";
 import { formatDate } from "@/lib/utils";
 import { prisma } from "@/lib/db";
 
-export async function generateStaticParams() {
+export async function generateStaticParams(): Promise<{ slug: string }[]> {
   if (!process.env.DATABASE_URL) {
     return [];
   }
@@ -25,8 +25,10 @@ export async function generateStaticParams() {
 export default async function BlogPostPage({
   params,
 }: {
-  params: { slug: string };
+  params: Promise<{ slug: string }>;
 }) {
+  const { slug } = await params;
+
   if (!process.env.DATABASE_URL) {
     notFound();
   }
@@ -34,7 +36,7 @@ export default async function BlogPostPage({
   let post;
   try {
     post = await prisma.blogPost.findUnique({
-      where: { slug: params.slug, published: true },
+      where: { slug: slug, published: true },
     });
   } catch (error) {
     console.error("Error fetching blog post:", error);
@@ -47,7 +49,7 @@ export default async function BlogPostPage({
 
   return (
     <article className="container mx-auto px-4 py-20 max-w-4xl">
-      <Button asChild variant="ghost" className="mb-8">
+      <Button asChild variant="outline" className="mb-8 border">
         <Link href="/blog">
           <ArrowLeft className="mr-2 h-4 w-4" />
           Back to Blog

@@ -14,21 +14,21 @@ const featuredDishes = [
     name: "Spaghetti Carbonara",
     description: "Classic Roman pasta with eggs, pancetta, and pecorino",
     price: 24.99,
-    image: "/images/carbonara.jpg",
+    image: "https://images.unsplash.com/photo-1621996346565-e3dbc646d9a9?w=800&q=80",
   },
   {
     id: "2",
     name: "Osso Buco",
     description: "Braised veal shanks with risotto",
     price: 32.99,
-    image: "/images/ossobuco.jpg",
+    image: "https://images.unsplash.com/photo-1556910103-1c02745aae4d?w=800&q=80",
   },
   {
     id: "3",
     name: "Tiramisu",
     description: "Classic Italian dessert with coffee and mascarpone",
     price: 10.99,
-    image: "/images/tiramisu.jpg",
+    image: "https://images.unsplash.com/photo-1571877227200-a0d98ea607e9?w=800&q=80",
   },
 ];
 
@@ -69,7 +69,7 @@ export default function Home() {
         <div
           className="absolute inset-0 bg-cover bg-center"
           style={{
-            backgroundImage: "url('/images/hero.jpg')",
+            backgroundImage: "url('https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=1920&q=80')",
             transform: `translateY(${scrollY * 0.5}px)`,
           }}
         >

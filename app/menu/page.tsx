@@ -166,7 +166,8 @@ export default function MenuPage() {
                     <div className="flex justify-between items-start">
                       <CardTitle className="text-xl">{item.name}</CardTitle>
                       <Button
-                        variant="ghost"
+                        variant="outline"
+                        className="border"
                         size="icon"
                         onClick={() => setSelectedItem(item)}
                         aria-label="View details"

@@ -225,26 +225,26 @@ export default function OrderPage() {
                         </div>
                         <div className="flex items-center gap-2">
                           <Button
-                            variant="ghost"
+                            variant="outline"
+                            className="border h-8 w-8"
                             size="icon"
-                            className="h-8 w-8"
                             onClick={() => updateQuantity(item.id, -1)}
                           >
                             <Minus className="h-4 w-4" />
                           </Button>
                           <span className="w-8 text-center">{item.quantity}</span>
                           <Button
-                            variant="ghost"
+                            variant="outline"
+                            className="border h-8 w-8"
                             size="icon"
-                            className="h-8 w-8"
                             onClick={() => updateQuantity(item.id, 1)}
                           >
                             <Plus className="h-4 w-4" />
                           </Button>
                           <Button
-                            variant="ghost"
+                            variant="outline"
+                            className="border h-8 w-8 text-destructive"
                             size="icon"
-                            className="h-8 w-8 text-destructive"
                             onClick={() => removeFromCart(item.id)}
                           >
                             <Trash2 className="h-4 w-4" />
