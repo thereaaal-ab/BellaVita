@@ -27,9 +27,19 @@ export default async function BlogPostPage({
 }: {
   params: { slug: string };
 }) {
-  const post = await prisma.blogPost.findUnique({
-    where: { slug: params.slug, published: true },
-  });
+  if (!process.env.DATABASE_URL) {
+    notFound();
+  }
+
+  let post;
+  try {
+    post = await prisma.blogPost.findUnique({
+      where: { slug: params.slug, published: true },
+    });
+  } catch (error) {
+    console.error("Error fetching blog post:", error);
+    notFound();
+  }
 
   if (!post) {
     notFound();
