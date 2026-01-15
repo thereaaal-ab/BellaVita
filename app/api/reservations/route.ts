@@ -14,6 +14,13 @@ const reservationSchema = z.object({
 
 export async function POST(request: Request) {
   try {
+    if (!process.env.DATABASE_URL) {
+      return NextResponse.json(
+        { error: "Database not configured. Please set DATABASE_URL environment variable." },
+        { status: 503 }
+      );
+    }
+
     const body = await request.json();
     const validated = reservationSchema.parse(body);
 
