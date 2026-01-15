@@ -48,12 +48,21 @@ export default function ReviewsPage() {
 
   useEffect(() => {
     fetch("/api/reviews")
-      .then((res) => res.json())
+      .then((res) => {
+        if (!res.ok) {
+          throw new Error("Failed to load reviews");
+        }
+        return res.json();
+      })
       .then((data) => {
-        setReviews(data);
+        // Ensure data is an array
+        setReviews(Array.isArray(data) ? data : []);
         setLoading(false);
       })
-      .catch(() => setLoading(false));
+      .catch(() => {
+        setReviews([]);
+        setLoading(false);
+      });
   }, []);
 
   const onSubmit = async (data: ReviewFormData) => {
@@ -70,7 +79,13 @@ export default function ReviewsPage() {
       setIsModalOpen(false);
       reset();
       // Refresh reviews
-      const updatedReviews = await fetch("/api/reviews").then((res) => res.json());
+      const updatedReviews = await fetch("/api/reviews")
+        .then((res) => {
+          if (!res.ok) throw new Error("Failed to fetch");
+          return res.json();
+        })
+        .then((data) => (Array.isArray(data) ? data : []))
+        .catch(() => []);
       setReviews(updatedReviews);
     } catch {
       toast.error("Failed to submit review. Please try again.");
