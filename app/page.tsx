@@ -54,23 +54,15 @@ const testimonials = [
 ];
 
 export default function Home() {
-  const [scrollY, setScrollY] = useState(0);
-
-  useEffect(() => {
-    const handleScroll = () => setScrollY(window.scrollY);
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
 
   return (
     <div className="flex flex-col">
       {/* Hero Section */}
       <section className="relative h-screen flex items-center justify-center overflow-hidden">
         <div
-          className="absolute inset-0 bg-cover bg-center"
+          className="absolute inset-0 bg-cover bg-center bg-fixed"
           style={{
             backgroundImage: "url('https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=1920&q=80')",
-            transform: `translateY(${scrollY * 0.5}px)`,
           }}
         >
           <div className="absolute inset-0 bg-black/40" />
@@ -181,8 +173,8 @@ export default function Home() {
               viewport={{ once: true }}
               transition={{ delay: index * 0.1 }}
             >
-              <Card className="overflow-hidden hover:shadow-lg transition-shadow">
-                <div className="relative h-64">
+              <Card className="overflow-hidden hover:shadow-lg transition-shadow flex flex-col h-full">
+                <div className="relative h-64 flex-shrink-0">
                   <Image
                     src={dish.image}
                     alt={dish.name}
@@ -191,14 +183,14 @@ export default function Home() {
                     sizes="(max-width: 768px) 100vw, 33vw"
                   />
                 </div>
-                <CardContent className="p-6">
+                <CardContent className="p-6 flex flex-col flex-grow">
                   <h3 className="text-xl font-semibold mb-2">{dish.name}</h3>
-                  <p className="text-muted-foreground mb-4">{dish.description}</p>
-                  <div className="flex justify-between items-center">
+                  <p className="text-muted-foreground mb-4 flex-grow">{dish.description}</p>
+                  <div className="flex justify-between items-center mt-auto">
                     <span className="text-2xl font-bold text-primary">
                       ${dish.price}
                     </span>
-                    <Button asChild variant="outline">
+                    <Button asChild variant="outline" className="border">
                       <Link href="/menu">View</Link>
                     </Button>
                   </div>
@@ -261,7 +253,7 @@ export default function Home() {
             ))}
           </div>
           <div className="text-center mt-12">
-            <Button asChild variant="outline">
+            <Button asChild variant="outline" className="border">
               <Link href="/reviews">Read More Reviews</Link>
             </Button>
           </div>

@@ -58,9 +58,6 @@ export function Header() {
               </Link>
             ))}
             <DarkModeToggle />
-            <Button asChild>
-              <Link href="/reservations">Reserve Table</Link>
-            </Button>
           </div>
 
           {/* Mobile Menu Button */}
