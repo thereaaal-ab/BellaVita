@@ -25,6 +25,14 @@ interface MenuItem {
 const categories = ["all", "appetizer", "main", "dessert", "drink"];
 const filters = ["all", "vegan", "vegetarian", "glutenFree"];
 
+// Italian category names for display
+const categoryNames: Record<string, string> = {
+  appetizer: "Antipasti",
+  main: "Primi & Secondi",
+  dessert: "Dolci",
+  drink: "Bevande",
+};
+
 export default function MenuPage() {
   const [menuItems, setMenuItems] = useState<MenuItem[]>([]);
   const [selectedCategory, setSelectedCategory] = useState("all");
@@ -68,6 +76,7 @@ export default function MenuPage() {
     return categoryMatch && filterMatch;
   });
 
+  // Group items by category, maintaining Italian menu structure
   const groupedItems = filteredItems.reduce((acc, item) => {
     if (!acc[item.category]) {
       acc[item.category] = [];
@@ -75,6 +84,10 @@ export default function MenuPage() {
     acc[item.category].push(item);
     return acc;
   }, {} as Record<string, MenuItem[]>);
+
+  // Order categories for display: Antipasti, Primi/Secondi, Dolci, Bevande
+  const categoryOrder = ["appetizer", "main", "dessert", "drink"];
+  const orderedCategories = categoryOrder.filter(cat => groupedItems[cat] && groupedItems[cat].length > 0);
 
   if (loading) {
     return (
@@ -138,15 +151,17 @@ export default function MenuPage() {
 
       {/* Menu Items */}
       <div className="space-y-12">
-        {Object.entries(groupedItems).map(([category, items]) => (
-          <motion.section
+        {orderedCategories.map((category) => {
+          const items = groupedItems[category];
+          return (
+            <motion.section
             key={category}
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
           >
-            <h2 className="text-3xl font-display font-bold mb-6 capitalize">
-              {category === "main" ? "Main Courses" : category}
+            <h2 className="text-3xl font-display font-bold mb-6">
+              {categoryNames[category] || category.charAt(0).toUpperCase() + category.slice(1)}
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {items.map((item) => (
@@ -205,7 +220,8 @@ export default function MenuPage() {
               ))}
             </div>
           </motion.section>
-        ))}
+          );
+        })}
       </div>
 
       {/* Item Details Modal */}

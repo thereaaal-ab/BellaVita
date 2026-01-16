@@ -90,3 +90,12 @@ model Newsletter {
   createdAt DateTime @default(now())
 }
 
+model Admin {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  name      String?
+  role      String   @default("admin") // admin, super_admin
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
