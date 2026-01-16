@@ -46,21 +46,21 @@ export function Header() {
         )}
         role="banner"
       >
-        <nav className="container mx-auto px-4 py-4" role="navigation" aria-label="Main navigation">
+        <nav className="container mx-auto px-4 sm:px-6 md:px-8 py-3 sm:py-4" role="navigation" aria-label="Main navigation">
         <div className="flex items-center justify-between">
           <Link href="/" className="flex items-center space-x-2" aria-label="Bella Vita - Home">
-            <span className="text-2xl font-display font-bold text-primary">
+            <span className="text-xl sm:text-2xl font-display font-bold text-primary">
               Bella Vita
             </span>
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-6">
+          <div className="hidden md:flex items-center space-x-4 lg:space-x-6">
             {navItems.map((item) => (
               <Link
                 key={item.href}
                 href={item.href}
-                className="text-sm font-medium text-foreground/80 hover:text-primary transition-colors"
+                className="text-sm lg:text-base font-medium text-foreground/80 hover:text-primary transition-colors px-2 py-1 min-h-[44px] flex items-center"
                 aria-label={`Navigate to ${item.label} page`}
               >
                 {item.label}
@@ -77,11 +77,12 @@ export function Header() {
               size="icon"
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               aria-label="Toggle menu"
+              className="min-h-[44px] min-w-[44px]"
             >
               {isMobileMenuOpen ? (
-                <X className="h-6 w-6" />
+                <X className="h-5 w-5 sm:h-6 sm:w-6" />
               ) : (
-                <Menu className="h-6 w-6" />
+                <Menu className="h-5 w-5 sm:h-6 sm:w-6" />
               )}
             </Button>
           </div>
@@ -89,18 +90,18 @@ export function Header() {
 
         {/* Mobile Navigation */}
         {isMobileMenuOpen && (
-          <div className="md:hidden mt-4 pb-4 space-y-2">
+          <div className="md:hidden mt-4 pb-4 space-y-1">
             {navItems.map((item) => (
               <Link
                 key={item.href}
                 href={item.href}
-                className="block px-4 py-2 text-sm font-medium text-foreground/80 hover:text-primary hover:bg-accent rounded-md transition-colors"
+                className="block px-4 py-3 text-base font-medium text-foreground/80 hover:text-primary hover:bg-accent rounded-md transition-colors min-h-[44px] flex items-center"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 {item.label}
               </Link>
             ))}
-            <Button asChild className="w-full mt-4">
+            <Button asChild className="w-full mt-4 min-h-[48px]">
               <Link href="/reservations" onClick={() => setIsMobileMenuOpen(false)}>
                 Reserve Table
               </Link>

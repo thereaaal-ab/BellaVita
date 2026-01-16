@@ -212,17 +212,56 @@ select option {
   color: hsl(var(--primary-foreground));
 }
 
-/* Responsive improvements */
-@media (max-width: 768px) {
+/* Mobile-first responsive improvements */
+/* Base styles are mobile-first, then enhanced for larger screens */
+
+/* Ensure proper viewport handling */
+html {
+  -webkit-text-size-adjust: 100%;
+  -moz-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+/* Container improvements for mobile */
+.container {
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+/* Larger touch targets on mobile - base (mobile-first) */
+button, 
+a[role="button"],
+input[type="button"],
+input[type="submit"] {
+  min-height: 44px;
+  min-width: 44px;
+  touch-action: manipulation;
+}
+
+/* Improved spacing for mobile */
+@media (max-width: 640px) {
   .container {
     padding-left: 1rem;
     padding-right: 1rem;
   }
-  
-  /* Larger touch targets on mobile */
-  button, a[role="button"] {
-    min-height: 44px;
-    min-width: 44px;
+}
+
+/* Tablet and up */
+@media (min-width: 640px) {
+  .container {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+}
+
+/* Desktop */
+@media (min-width: 1024px) {
+  .container {
+    padding-left: 2rem;
+    padding-right: 2rem;
   }
 }
 
