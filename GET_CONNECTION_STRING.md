@@ -80,3 +80,4 @@ Once you have the correct connection string:
 2. Run: `npm run db:push`
 3. Run: `npm run db:seed` (optional)
 
+

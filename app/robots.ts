@@ -7,7 +7,7 @@ export default function robots(): MetadataRoute.Robots {
       allow: "/",
       disallow: ["/admin/", "/api/"],
     },
-    sitemap: `${process.env.NEXT_PUBLIC_SITE_URL || "https://bellavita.com"}/sitemap.xml`,
+    sitemap: `${process.env.NEXT_PUBLIC_SITE_URL || "https://bella-vita-beta.vercel.app"}/sitemap.xml`,
   };
 }
 

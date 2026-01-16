@@ -83,3 +83,4 @@ npm run db:seed
 - Run `npm run db:push` to create the tables
 - Check that the schema was pushed successfully
 
+

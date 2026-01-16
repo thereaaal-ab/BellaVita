@@ -34,17 +34,17 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://bellavita.com",
+    url: "https://bella-vita-beta.vercel.app",
     siteName: "Bella Vita",
     title: "Bella Vita - Authentic Italian Restaurant",
     description:
       "Experience authentic Italian cuisine at Bella Vita. Fine dining with traditional recipes, fresh ingredients, and an elegant atmosphere.",
     images: [
       {
-        url: "/og-image.jpg",
+        url: "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=1200&q=80",
         width: 1200,
         height: 630,
-        alt: "Bella Vita Restaurant",
+        alt: "Bella Vita Restaurant - Authentic Italian Dining",
       },
     ],
   },
@@ -53,7 +53,7 @@ export const metadata: Metadata = {
     title: "Bella Vita - Authentic Italian Restaurant",
     description:
       "Experience authentic Italian cuisine at Bella Vita. Fine dining with traditional recipes, fresh ingredients, and an elegant atmosphere.",
-    images: ["/og-image.jpg"],
+    images: ["https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=1200&q=80"],
   },
   robots: {
     index: true,
@@ -92,7 +92,7 @@ export default function RootLayout({
         <ThemeProvider defaultTheme="system" storageKey="bellavita-theme">
           <div className="flex min-h-screen flex-col">
             <Header />
-            <main className="flex-1">{children}</main>
+            <main id="main-content" className="flex-1" role="main">{children}</main>
             <Footer />
           </div>
           <CookieConsent />

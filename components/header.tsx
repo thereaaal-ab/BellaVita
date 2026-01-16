@@ -30,17 +30,25 @@ export function Header() {
   }, []);
 
   return (
-    <header
-      className={cn(
-        "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
-        isScrolled
-          ? "bg-background/80 backdrop-blur-md shadow-md"
-          : "bg-transparent"
-      )}
-    >
-      <nav className="container mx-auto px-4 py-4">
+    <>
+      <a
+        href="#main-content"
+        className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[100] focus:px-4 focus:py-2 focus:bg-primary focus:text-primary-foreground focus:rounded-md"
+      >
+        Skip to main content
+      </a>
+      <header
+        className={cn(
+          "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
+          isScrolled
+            ? "bg-background/80 backdrop-blur-md shadow-md"
+            : "bg-transparent"
+        )}
+        role="banner"
+      >
+        <nav className="container mx-auto px-4 py-4" role="navigation" aria-label="Main navigation">
         <div className="flex items-center justify-between">
-          <Link href="/" className="flex items-center space-x-2">
+          <Link href="/" className="flex items-center space-x-2" aria-label="Bella Vita - Home">
             <span className="text-2xl font-display font-bold text-primary">
               Bella Vita
             </span>
@@ -53,6 +61,7 @@ export function Header() {
                 key={item.href}
                 href={item.href}
                 className="text-sm font-medium text-foreground/80 hover:text-primary transition-colors"
+                aria-label={`Navigate to ${item.label} page`}
               >
                 {item.label}
               </Link>

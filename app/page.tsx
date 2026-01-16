@@ -80,7 +80,7 @@ export default function Home() {
             Authentic Italian Cuisine in the Heart of the City
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button asChild size="lg" className="text-lg px-8 py-6">
+            <Button asChild size="lg" className="text-lg px-8 py-6" aria-label="Make a reservation at Bella Vita">
               <Link href="/reservations">Reserve a Table</Link>
             </Button>
             <Button
@@ -88,6 +88,7 @@ export default function Home() {
               variant="outline"
               size="lg"
               className="text-lg px-8 py-6 bg-white/10 border-white text-white hover:bg-white/20"
+              aria-label="View our menu"
             >
               <Link href="/menu">View Menu</Link>
             </Button>
@@ -177,10 +178,11 @@ export default function Home() {
                 <div className="relative h-64 flex-shrink-0">
                   <Image
                     src={dish.image}
-                    alt={dish.name}
+                    alt={`${dish.name} - ${dish.description}`}
                     fill
                     className="object-cover"
                     sizes="(max-width: 768px) 100vw, 33vw"
+                    loading="lazy"
                   />
                 </div>
                 <CardContent className="p-6 flex flex-col flex-grow">
@@ -188,9 +190,9 @@ export default function Home() {
                   <p className="text-muted-foreground mb-4 flex-grow">{dish.description}</p>
                   <div className="flex justify-between items-center mt-auto">
                     <span className="text-2xl font-bold text-primary">
-                      ${dish.price}
+                      ${dish.price.toFixed(2)}
                     </span>
-                    <Button asChild variant="outline" className="border">
+                    <Button asChild variant="outline" className="border" aria-label={`View ${dish.name} on menu`}>
                       <Link href="/menu">View</Link>
                     </Button>
                   </div>
@@ -200,7 +202,7 @@ export default function Home() {
           ))}
         </div>
         <div className="text-center mt-12">
-          <Button asChild size="lg">
+          <Button asChild size="lg" aria-label="View our full menu">
             <Link href="/menu">View Full Menu</Link>
           </Button>
         </div>
@@ -253,7 +255,7 @@ export default function Home() {
             ))}
           </div>
           <div className="text-center mt-12">
-            <Button asChild variant="outline" className="border">
+            <Button asChild variant="outline" className="border" aria-label="Read more customer reviews">
               <Link href="/reviews">Read More Reviews</Link>
             </Button>
           </div>
@@ -274,7 +276,7 @@ export default function Home() {
           <p className="text-xl mb-8 opacity-90">
             Reserve your table today and indulge in authentic Italian cuisine
           </p>
-          <Button asChild size="lg" variant="secondary" className="text-lg px-8 py-6">
+          <Button asChild size="lg" variant="secondary" className="text-lg px-8 py-6" aria-label="Make a reservation at Bella Vita">
             <Link href="/reservations">Make a Reservation</Link>
           </Button>
         </motion.div>

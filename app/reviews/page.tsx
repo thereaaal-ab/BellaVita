@@ -136,7 +136,7 @@ export default function ReviewsPage() {
             </p>
           </div>
         </div>
-        <Button onClick={() => setIsModalOpen(true)} className="mt-6">
+        <Button onClick={() => setIsModalOpen(true)} className="mt-6" aria-label="Write a review for Bella Vita">
           <MessageSquare className="mr-2 h-4 w-4" />
           Write a Review
         </Button>
@@ -171,12 +171,29 @@ export default function ReviewsPage() {
                 <p className="text-muted-foreground mb-4 italic">
                   &ldquo;{review.comment}&rdquo;
                 </p>
-                <p className="font-semibold text-sm">— {review.name}</p>
+                <div className="flex items-center justify-between">
+                  <p className="font-semibold text-sm">— {review.name}</p>
+                  {review.createdAt && (
+                    <span className="text-xs text-muted-foreground">
+                      {new Date(review.createdAt).toLocaleDateString()}
+                    </span>
+                  )}
+                </div>
               </CardContent>
             </Card>
           </motion.div>
         ))}
       </div>
+
+      {reviews.length === 0 && (
+        <div className="text-center py-12">
+          <p className="text-muted-foreground mb-4">No reviews yet. Be the first to share your experience!</p>
+          <Button onClick={() => setIsModalOpen(true)} aria-label="Write the first review">
+            <MessageSquare className="mr-2 h-4 w-4" />
+            Write a Review
+          </Button>
+        </div>
+      )}
 
       <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} title="Write a Review">
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
@@ -232,7 +249,7 @@ export default function ReviewsPage() {
               <p className="text-sm text-destructive mt-1">{errors.comment.message}</p>
             )}
           </div>
-          <Button type="submit" className="w-full" disabled={isSubmitting}>
+          <Button type="submit" className="w-full" disabled={isSubmitting} aria-label="Submit your review">
             {isSubmitting ? "Submitting..." : "Submit Review"}
           </Button>
         </form>

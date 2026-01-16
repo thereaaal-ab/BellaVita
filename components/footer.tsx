@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { Facebook, Instagram, Mail, MapPin, Phone, Clock } from "lucide-react";
+import { Facebook, Instagram, Twitter, Mail, MapPin, Phone, Clock } from "lucide-react";
 import { NewsletterForm } from "./newsletter-form";
 
 const footerLinks = {
@@ -23,7 +23,7 @@ const footerLinks = {
 
 export function Footer() {
   return (
-    <footer className="bg-secondary border-t">
+    <footer className="bg-secondary border-t dark:bg-secondary/80" role="contentinfo">
       <div className="container mx-auto px-4 py-12">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Brand Section */}
@@ -37,22 +37,31 @@ export function Footer() {
             </p>
             <div className="flex space-x-4">
               <a
-                href="https://instagram.com"
+                href="https://facebook.com/bellavita"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-muted-foreground hover:text-primary transition-colors"
-                aria-label="Instagram"
+                aria-label="Visit our Facebook page"
+              >
+                <Facebook className="h-5 w-5" />
+              </a>
+              <a
+                href="https://instagram.com/bellavita"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-muted-foreground hover:text-primary transition-colors"
+                aria-label="Visit our Instagram page"
               >
                 <Instagram className="h-5 w-5" />
               </a>
               <a
-                href="https://facebook.com"
+                href="https://twitter.com/bellavita"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-muted-foreground hover:text-primary transition-colors"
-                aria-label="Facebook"
+                aria-label="Visit our Twitter page"
               >
-                <Facebook className="h-5 w-5" />
+                <Twitter className="h-5 w-5" />
               </a>
             </div>
           </div>
@@ -116,7 +125,7 @@ export function Footer() {
         </div>
 
         <div className="mt-8 pt-8 border-t flex flex-col md:flex-row justify-between items-center text-sm text-muted-foreground">
-          <p>© {new Date().getFullYear()} Bella Vita. All rights reserved.</p>
+          <p>© 2026 Bella Vita. All rights reserved.</p>
           <div className="flex space-x-4 mt-4 md:mt-0">
             {footerLinks.legal.map((link) => (
               <Link

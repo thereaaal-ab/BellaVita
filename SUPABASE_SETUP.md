@@ -91,3 +91,4 @@ After setup, you can:
 - Use Supabase Auth for user authentication
 - Set up database backups
 
+

@@ -238,7 +238,7 @@ export default function ReservationsPage() {
                 />
               </div>
 
-              <Button type="submit" size="lg" className="w-full" disabled={isSubmitting}>
+              <Button type="submit" size="lg" className="w-full" disabled={isSubmitting} aria-label="Submit your reservation">
                 {isSubmitting ? "Submitting..." : "Submit Reservation"}
               </Button>
             </form>

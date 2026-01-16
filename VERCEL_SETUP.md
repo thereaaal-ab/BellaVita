@@ -120,3 +120,4 @@ If issues persist:
 3. Verify connection string format matches exactly
 4. Ensure Supabase project is not paused
 
+

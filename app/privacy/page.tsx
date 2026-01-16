@@ -1,8 +1,12 @@
 import { Metadata } from "next";
+import Link from "next/link";
+import { Button } from "@/components/ui/button";
+import { ArrowLeft } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Privacy Policy",
-  description: "Privacy Policy for Bella Vita Restaurant",
+  title: "Privacy Policy | Bella Vita - Authentic Italian Restaurant",
+  description: "Privacy Policy for Bella Vita Restaurant. Learn how we collect, use, and protect your personal information.",
+  keywords: "privacy policy, data protection, bella vita privacy, restaurant privacy policy",
 };
 
 export default function PrivacyPage() {
@@ -78,12 +82,13 @@ export default function PrivacyPage() {
           </p>
         </section>
 
-        <div className="mt-8 p-4 bg-muted rounded-lg">
-          <p className="text-sm text-muted-foreground">
-            <strong>Note:</strong> This is a template privacy policy. Please consult with a legal
-            professional to ensure compliance with applicable laws and regulations in your
-            jurisdiction, including GDPR, CCPA, and other data protection laws.
-          </p>
+        <div className="mt-8">
+          <Button asChild variant="outline" className="border">
+            <Link href="/">
+              <ArrowLeft className="mr-2 h-4 w-4" />
+              Back to Home
+            </Link>
+          </Button>
         </div>
       </div>
     </div>

@@ -179,10 +179,11 @@ export default function MenuPage() {
                     <div className="relative h-48">
                       <Image
                         src={item.image}
-                        alt={item.name}
+                        alt={`${item.name} - ${item.description}`}
                         fill
                         className="object-cover"
                         sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                        loading="lazy"
                       />
                     </div>
                   )}
@@ -194,7 +195,7 @@ export default function MenuPage() {
                         className="border"
                         size="icon"
                         onClick={() => setSelectedItem(item)}
-                        aria-label="View details"
+                        aria-label={`View details for ${item.name}`}
                       >
                         <Info className="h-4 w-4" />
                       </Button>
