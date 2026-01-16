@@ -1,30 +1,8 @@
 "use client";
 
-import Image from "next/image";
 import { motion } from "framer-motion";
 import { Award, Heart, Users } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
-
-const team = [
-  {
-    name: "Marco Rossi",
-    role: "Head Chef",
-    image: "https://images.unsplash.com/photo-1581299894007-aaa50297cf16?w=400&q=80",
-    bio: "With over 20 years of experience, Marco brings authentic Italian flavors to every dish.",
-  },
-  {
-    name: "Sofia Bianchi",
-    role: "Pastry Chef",
-    image: "https://images.unsplash.com/photo-1559339352-11d035aa65de?w=400&q=80",
-    bio: "Sofia specializes in traditional Italian desserts and has won multiple awards.",
-  },
-  {
-    name: "Giuseppe Verdi",
-    role: "Sommelier",
-    image: "https://images.unsplash.com/photo-1577219491135-ce391730fb2c?w=400&q=80",
-    bio: "Giuseppe curates our extensive wine collection, ensuring perfect pairings.",
-  },
-];
 
 const values = [
   {
@@ -129,49 +107,6 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Team Section */}
-      <section className="py-20 container mx-auto px-4">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="text-center mb-12"
-        >
-          <h2 className="text-4xl md:text-5xl font-display font-bold mb-4">Meet Our Team</h2>
-          <p className="text-muted-foreground text-lg">
-            The talented individuals behind Bella Vita
-          </p>
-        </motion.div>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-          {team.map((member, index) => (
-            <motion.div
-              key={member.name}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: index * 0.1 }}
-            >
-              <Card className="overflow-hidden">
-                <div className="relative h-64">
-                  <Image
-                    src={member.image}
-                    alt={member.name}
-                    fill
-                    className="object-cover"
-                    sizes="(max-width: 768px) 100vw, 33vw"
-                  />
-                </div>
-                <CardContent className="p-6 text-center">
-                  <h3 className="text-xl font-semibold mb-1">{member.name}</h3>
-                  <p className="text-primary mb-3">{member.role}</p>
-                  <p className="text-muted-foreground text-sm">{member.bio}</p>
-                </CardContent>
-              </Card>
-            </motion.div>
-          ))}
-        </div>
-      </section>
-
       {/* Video Section */}
       <section className="py-20 bg-secondary">
         <div className="container mx-auto px-4">
@@ -181,16 +116,17 @@ export default function AboutPage() {
             viewport={{ once: true }}
             className="max-w-4xl mx-auto"
           >
-            <div className="aspect-video bg-muted rounded-lg overflow-hidden">
-              <iframe
-                width="100%"
-                height="100%"
-                src="https://www.youtube.com/embed/dQw4w9WgXcQ"
-                title="Bella Vita Restaurant"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
-                className="w-full h-full"
-              />
+            <div className="aspect-video bg-white rounded-lg overflow-hidden shadow-lg">
+              <video
+                autoPlay
+                loop
+                muted
+                playsInline
+                className="w-full h-full object-contain"
+                style={{ backgroundColor: "#ffffff" }}
+              >
+                <source src="https://sample-videos.com/video123/mp4/720/big_buck_bunny_720p_1mb.mp4" type="video/mp4" />
+              </video>
             </div>
           </motion.div>
         </div>

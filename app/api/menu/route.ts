@@ -4,8 +4,11 @@ import { prisma } from "@/lib/db";
 export async function GET() {
   try {
     if (!process.env.DATABASE_URL) {
-      // Return empty array if database is not configured
-      return NextResponse.json([]);
+      console.error("DATABASE_URL is not configured in environment variables");
+      return NextResponse.json(
+        { error: "Database not configured", items: [] },
+        { status: 503 }
+      );
     }
 
     const menuItems = await prisma.menuItem.findMany({
@@ -24,8 +27,14 @@ export async function GET() {
     return NextResponse.json(items);
   } catch (error) {
     console.error("Error fetching menu:", error);
-    // Return empty array on error instead of 500
-    return NextResponse.json([]);
+    // Return error details for debugging
+    return NextResponse.json(
+      { 
+        error: error instanceof Error ? error.message : "Database connection failed",
+        items: [] 
+      },
+      { status: 500 }
+    );
   }
 }
 

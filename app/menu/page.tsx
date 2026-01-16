@@ -45,23 +45,32 @@ export default function MenuPage() {
     fetch("/api/menu")
       .then((res) => {
         if (!res.ok) {
-          throw new Error("Failed to load menu");
+          return res.json().then((data) => {
+            throw new Error(data.error || "Failed to load menu");
+          });
         }
         return res.json();
       })
       .then((data) => {
-        if (Array.isArray(data)) {
-          setMenuItems(data);
-          setError(null);
+        // Handle both array response and object with items property
+        const items = Array.isArray(data) ? data : (data.items || []);
+        if (Array.isArray(items)) {
+          setMenuItems(items);
+          if (items.length === 0 && data.error) {
+            setError(data.error);
+          } else {
+            setError(null);
+          }
         } else {
           setMenuItems([]);
           setError("Menu is unavailable right now. Please try again later.");
         }
         setLoading(false);
       })
-      .catch(() => {
+      .catch((err) => {
+        console.error("Menu fetch error:", err);
         setMenuItems([]);
-        setError("Menu is unavailable right now. Please try again later.");
+        setError(err.message || "Menu is unavailable right now. Please check your connection and try again.");
         setLoading(false);
       });
   }, []);
